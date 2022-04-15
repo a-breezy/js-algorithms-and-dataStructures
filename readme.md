@@ -19,6 +19,7 @@ A repo following along the Udemy's [JavaScript Algorithms and Data Structures Ma
   1. [Big O Notation](#1-big-o-notation)
   2. [Arrays and Objects](#2-arrays-and-objects)
   3. [Problem Solving](#3-problem-solving)
+  4. [Problem Solving Patterns](#3-problem-solving-patterns)
 
 ## Instructions
 
@@ -200,3 +201,143 @@ Look at individual components, line by line, and see what works well, and what d
 - Can you improve the performance of your solution?
 - Can you think of other ways to refactor?
 - How have other people solved this problem?
+
+## 4: Problem Solving Patterns
+
+### Frequency Counter
+Use and object to compare frequencies of certain values
+  - Can be O(n) time when done well.
+  - Easier solutions are O(n^2^) 
+
+Naive Solution:
+  ```
+  function same(arr1, arr2) {
+    if(arr1.length !== arr2.length) {
+      return false;
+    }
+    for (let i = 0; i < arr1.length; i++) {
+      let correctIndex = arr2.indexOf(arr1[i] ** 2)
+      // if correctIndex is not in array, return false
+      if(correctIndex === -1) {
+        return false;
+      }
+      // take correctIndex out of array2 and continue with loop
+      arr2.splice(correctIndex,1)
+    }
+    return true;
+  }
+  ```
+  While this approach works, it's complexity if O(n^2^).
+
+Refactored:
+  ```
+  function same(arr1, arr2) {
+    if(arr1.length !== arr2.length){
+      return false;
+    }
+    // counts frequency of individual arrays
+    let frequencyCounter1 = {}
+    let frequencyCounter2 = {}
+    // count frequency of array 1
+    for(let val of arr1) {
+      frequencyCounter1[val] = (frequencyCounter1[val] || 0) +1
+    }
+    // count frequency of array 2
+    for(let val of arr2) {
+      frequencyCounter2[val] = (frequencyCounter2[val] || 0) +1
+    }
+    // compare keys of frequencyCounter1 and frequencyCounter2
+    for(let key in frequencyCounter1) {
+      if(!(key ** 2 in frequencyCounter2)){
+        return false
+      }
+      if(frequencyCounter2[key ** 2] !== frequencyCounter1[key]){
+        return false
+      }
+    }
+    return true
+  }
+  ```
+  Time complexity O(n), becuase there are multiple loops that aren't nested
+
+Takeaway: Using objects to hold contents of input, which allows a quick comparison to another input
+
+Example: Anagram 
+Can you create a function that can figure out if two words are anagrams?
+
+### Multiple Pointers
+Creating pointers/values that correspond to an index/position and move towards beginning, middle, or end based on condition
+Very efficient for folving problems with minimal space complexity
+
+Example:
+create a function that takes in a sorted array of integers and finds the first pair where the sum is zero. Either return pair of undefined if pair doesnt exist
+
+Naive Solution:
+```
+function sumZero(arr) {
+  for(let i = 0; i < arr.length; i++) {
+    for(let j = i+1; j < arr.length; j++){
+      if(arr[i] + arr[j] === 0){
+        return [arr[i], arr[j]];
+      }
+    }
+  }
+}
+```
+Time complexity O(n^2^)
+Space complexity O(1)
+
+Refactored:
+Instead of looping through two arrays, compare the values of opposite sides of the array and move through the array based on having positive or negative remainders
+
+```
+function sumZero(arr){
+  let left = 0;
+  let right = arr.length - 1;
+  
+  while(left < right){
+    let sum = arr[left] + arr[right];
+    
+    if(sum === 0){
+      return[arr[left], arr[right]]
+    } else if(sum > 0){
+      right--
+    } else {
+      left++
+    }
+  }
+}
+```
+
+Time complexity 0(n)
+Space complexity 0(1)
+
+### Sliding Window
+Making a window and sliding it depending on conditions
+
+ex: write a function that accepts an array of integers and a number (n), then calculating the maximum sum of n consecutive elements of the array.
+
+```
+function maxSubarraySum(arr, num){
+  let maxSum = 0;
+  let tempSum = 0;
+  if (arr.length < num) return null;
+  for (let i = 0; i < num; i++){
+    maxSum += arr[i];
+  }
+  tempSum = maxSum;
+  for (let i = num; i < arr.length; i++){
+    tempSum = tempSum - arr[i - num] + arr[i];
+    maxSum = Math.max(maxSum, tempSum);
+  }
+  return maxSum;
+}
+```
+Time complexity O(n)
+
+Instead of looping through the array twice and adding each set of numbers twice, you subtract the first number from the array and add the next number to the array
+
+### Divide and Conquer
+Dividing a dataset into smaller chunks and repeating a process within a subset of data (like a sorting algorithm - binary search).
+  - Decreases time complexity
+  - Check a specific part of a sorted array, if larger than target search smaller, if smaller than target search longer
