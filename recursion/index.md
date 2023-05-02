@@ -20,7 +20,7 @@ When there's a return keyword, the top item from the stack is removed
 Base case: Where the recursion ends
 Input: the function that's being called over and over, but with  different input in each call
 
-ex:
+ex:```
 function countDown(num){
   if(num <= 0) {
     console.log("All done!");
@@ -29,26 +29,26 @@ function countDown(num){
   console.log(num);
   num--;
   coundDown(num);
-}
+}```
 
 this function calls itself whenever num is greater than 0, and continues to do so until num is 0.
 
-ex:
+ex:```
 function sumRange(num){
   if(num === 1) return 1;
   return num + sumRange(num - 1);
-}
+}```
 
 this function takes the num and if it's not 1, returns the num plus the sumRange recursive function of whatever num - 1 is. in this way the function takes the first number and adds it to itself minus 1 until it gets to the basecase of num === 1
 
 ## Factorial
 n! = n * (n - 1) * (n - 1)
 
-ex:
+ex:```
 function factorial(num){
   if(num === 1) return 1;
   return num * factorial(num - 1);
-}
+}```
 
   - basecase num === 1
   - function multiplies num by itself minus 1 until num is 1
