@@ -76,3 +76,7 @@ Look at individual components, line by line, and see what works well, and what d
 ## Frequency Counter (On<sup>2</sup>)
 
 Comparing two arrays, create two objects to hold each value with the frequency of its occurance. Then compare the two objects of each array to see if the frequencies of each of the values correspond in the way that you're looking for.
+
+## Multiple Pointers Pattern (On)
+
+Looking at an array through multiple pointers that compare the value at one index vs another. The pointers are moved until they find the value is being searched for. On each comparison the left or right pointer is moved depending on the condition you're searching ot fill. If the value isn't found return undefined. One caveat is that this effective on sorted arrays, otherwise it's not so handy because the array needs to be sorted first.

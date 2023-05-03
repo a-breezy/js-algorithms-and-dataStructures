@@ -1,4 +1,4 @@
-### Bubble Sort On<sup>2
+# Bubble Sort On<sup>2</sup>
 
 Sorting an array by having the largest values bubble to the top
 
@@ -84,6 +84,10 @@ Going through a list or array and sorting based on the smallest value of the arr
 5. After the loop is finished set the new minimum value to the index of the position of the outer loop
 6. Return the sorted array
 
-# Insertion Sort On<sup>2
+# Insertion Sort On<sup>2</sup>
 
 Inserting elements into their place in an array by comparing one element to another and determining if a swap is necessary. If an element is in the wrong place, iterate through the sorted portion and place element where it goes. Repeat until array is sorted
+
+# Merge Sort (Time complexity: O(n log n) Space complexity: O(n))
+
+A sorting algorithm that takes an array and recursively breaks it into smaller arrays, ultimately of two values. It then sorts those arrays by smallest value before combining it with the larger array that it was initialy divided from. With each combination the array gets sorted to larger values.
