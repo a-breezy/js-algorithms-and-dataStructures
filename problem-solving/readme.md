@@ -7,7 +7,7 @@ An algorithm is a process or set of steps to accomplish a certain task
 - Devise a plan for solving problems
 - Master common problem solving patterns
 
-## Understand the Problem
+### Understand the Problem
 
 (Check out _How to Solve It_ by George Polya)
 Ask yourself these questions:
@@ -18,7 +18,7 @@ Ask yourself these questions:
 4.  Can the outputs be determined from the inputs? Do you have enout information to solve the problem?
 5.  How should I label important pieces of data that are part of the problem?
 
-## Explore Concrete Examples
+### Explore Concrete Examples
 
 - Helps to understand the problem better
 - Provides sanity checks that help your solution show how it should work
@@ -37,7 +37,7 @@ Example: Write a function that takes in a string and returns cound of each chara
 2. input: charCount("my phone number is 1234")
 3. input: charCount("") --> output: null, undefined, {}
 
-## Break it Down
+### Break it Down
 
 Little comments for steps to take to get to the answer
 Explicitly write out the steps you need to take
@@ -45,7 +45,7 @@ Explicitly write out the steps you need to take
 - Forces you to think about the code you're going to write
 - Helps catch any conceptual issues or misunderstandings before getting into the problem
 
-## Solve and Simplify
+### Solve and Simplify
 
 If you can't solve the problem, solve a simpler problem (instead of getting stuck on the difficult problem, do what you know how to do while ignoring the harder part of the problem until the end.)
 
@@ -59,7 +59,7 @@ Simplify:
 
 4. Incorporate that difficulty back in
 
-## Look Back and Refactor
+### Look Back and Refactor
 
 Look at individual components, line by line, and see what works well, and what doesn't
 
@@ -71,12 +71,21 @@ Look at individual components, line by line, and see what works well, and what d
 - Can you think of other ways to refactor?
 - How have other people solved this problem?
 
-# Common Problem Solving Patterns
+## Common Problem Solving Patterns
 
-## Frequency Counter (On<sup>2</sup>)
+### Frequency Counter (On<sup>2</sup>)
 
 Comparing two arrays, create two objects to hold each value with the frequency of its occurance. Then compare the two objects of each array to see if the frequencies of each of the values correspond in the way that you're looking for.
 
-## Multiple Pointers Pattern (On)
+### Multiple Pointers Pattern (On)
 
 Looking at an array through multiple pointers that compare the value at one index vs another. The pointers are moved until they find the value is being searched for. On each comparison the left or right pointer is moved depending on the condition you're searching ot fill. If the value isn't found return undefined. One caveat is that this effective on sorted arrays, otherwise it's not so handy because the array needs to be sorted first.
+
+### Sliding Window (On)
+
+For when you have an array/string of data and are looking for a subset of data within that array/string. To do this you make a 'window' of a single variable or subarray and move the window depending on a condition, generally starting on the left and moving to the right.
+A loop within a loop
+
+### Divide and Conquer 
+
+Take an array or string and divide in half, then divide each of the subarrays by half continuing until you get to the base case and return what you're searching for.

@@ -36,8 +36,6 @@ function multiplePointers(arr) {
 	}
 }
 
-function slidingWindow(arr) {}
-
 // write a function that takes an array or string and checks for duplicate values
 // this one uses a frequency counter
 function areThereDuplicates() {
@@ -70,4 +68,45 @@ function areThereDuplicates() {
 // or a one liner
 function areThereDuplicates() {
 	return new Set(arguments).size !== arguments.length;
+}
+
+// using multiple pointers
+// given an array, determin the average of a pair of numbers is the target average
+function averagePair(arr, average) {
+	let start = 0;
+	let end = arr.length - 1;
+	while (start < end) {
+		let pairAv = arr[start] + arr[end] / 2;
+		if (pairAv === average) return true;
+		else if (pairAv < average) start++;
+		else end--;
+	}
+	return false;
+}
+
+// using multiple pointers
+// given a substring, check another string to see if it occurs
+function isSubsequence(subStr, str) {
+
+}
+
+console.log(isSubsequence('helo', 'hello world'))
+
+// sliding window function
+// find the largest subarray of arr, with the num length
+function maxSubarraySum(arr, num) {
+	let maxSum = 0;
+	let tempSum = 0;
+	if (arr.length < num) return null;
+	// first loop creates initial maxSum to compare in next loop
+	for (let i = 0; i < num; i++) {
+		maxSum += arr[i];
+	}
+	tempSum = maxSum;
+	for (let i = num; i < arr.length; i++) {
+		// with each pass of the loop, subtrack last index of subarray and add next index
+		tempSum = tempSum - arr[i - num] + arr[i];
+		maxSum = Math.max(maxSum, tempSum);
+	}
+	return max;
 }

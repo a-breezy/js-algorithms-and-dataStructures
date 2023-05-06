@@ -1,4 +1,6 @@
-# Bubble Sort On<sup>2</sup>
+# Sorting Algorithms
+
+## Bubble Sort On<sup>2</sup>
 
 Sorting an array by having the largest values bubble to the top
 
@@ -71,11 +73,11 @@ function bubbleSort(arr){
 
 Bubble sort is a good way to sort arrays generally, however if the array in nearly sorted this meathod will loop through unnecessarily, creating more work for itself.
 
-# Selection Sort On<sup>2
+## Selection Sort On<sup>2
 
 Going through a list or array and sorting based on the smallest value of the array.
 
-## Implemention of Selection Sort
+### Implemention of Selection Sort
 
 1. Create a loop within a loop.
 2. The outer loop is the number that you're comparing to the numbers in the inner loop
@@ -84,10 +86,15 @@ Going through a list or array and sorting based on the smallest value of the arr
 5. After the loop is finished set the new minimum value to the index of the position of the outer loop
 6. Return the sorted array
 
-# Insertion Sort On<sup>2</sup>
+## Insertion Sort (Time complexity: On<sup>2</sup>)
 
 Inserting elements into their place in an array by comparing one element to another and determining if a swap is necessary. If an element is in the wrong place, iterate through the sorted portion and place element where it goes. Repeat until array is sorted
 
-# Merge Sort (Time complexity: O(n log n) Space complexity: O(n))
+## Merge Sort (Time complexity: O(n log n) Space complexity: O(n))
 
 A sorting algorithm that takes an array and recursively breaks it into smaller arrays, ultimately of two values. It then sorts those arrays by smallest value before combining it with the larger array that it was initialy divided from. With each combination the array gets sorted to larger values.
+
+## Quick Sort (Time complexity: best O(log n), worst O(n<sup>2</sup>) Space complexity: o(n))
+
+Based on divide and conquer, quick sort uses a pivot (an element of what's being sorted) and places everything smaller than that element to the left and everything larger to the right. The function then recursively sorts the array.
+The pivot should be the median, ideally. To implement the pivot, create a helper function.
